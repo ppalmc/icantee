@@ -74,7 +74,8 @@ def showmenu():
     getstore = request.args.get('store')
     docs = db.menus.find({'store':int(getstore)})
     r = dict()
+    r['data'] = []
     for doc in docs:
             ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
-            r.append(ret)
+            r['data'].append(ret)
     return jsonify(r)
