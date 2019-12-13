@@ -73,7 +73,7 @@ def showmenu():
     db = client.student_scores
     getstore = request.args.get('store')
     docs = db.menus.find({'store':int(getstore)})
-    r = []
+    r = dict()
     for doc in docs:
             ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
             r.append(ret)
