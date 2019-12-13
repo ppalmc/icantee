@@ -73,8 +73,9 @@ def showmenu():
     db = client.student_scores
     getstore = request.args.get('store')
     docs = db.menus.find({'store':getstore})
-    ##r = []
-    #for doc in docs:
-    #		ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
-    #		r.append(ret)
-    return jsonify(docs)
+    r = dict()
+    r['data'] = []
+    for doc in docs:
+        	ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
+            r['data'].append(ret)
+    return jsonify(r)
