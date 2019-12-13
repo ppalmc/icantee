@@ -35,7 +35,7 @@ def insertmenu():
     list_of_menu = []
     for line in file:
             menu = line.split(',')
-            m = {'item':menu[0], 'store':menu[4], 'cal':menu[2], 'filter':menu[1], 'price':menu[3]}
+            m = {'item':menu[0], 'store':int(menu[4]), 'cal':menu[2], 'filter':menu[1], 'price':menu[3]}
             list_of_menu.append(m)
     db.menus.delete_many({})
     result = db.menus.insert_many(list_of_menu, ordered=False)
@@ -72,10 +72,10 @@ def showmenu():
     client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
     db = client.student_scores
     getstore = request.args.get('store')
-    docs = db.menus.find({'store':getstore})
+    docs = db.menus.find_all({'store':getstore})
     r = dict()
     r.append(docs)
-    #for doc in docs:
-    #        ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
-    #        r['data'].append(ret)
+    for doc in docs:
+            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
+            r['data'].append(ret)
     return jsonify(r)
