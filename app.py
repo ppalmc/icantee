@@ -72,7 +72,7 @@ def showmenu():
     client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
     db = client.student_scores
     getstore = request.args.get('store')
-    docs = db.menus.find_all({'store':int(getstore)})
+    docs = db.menus.find({'store':int(getstore)})
     r = []
     for doc in docs:
             ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
