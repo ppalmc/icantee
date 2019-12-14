@@ -43,9 +43,10 @@ def choosefilter():
     db = client.student_scores
     docs = db.menus.find({})
     getfilter = request.args.get('filter')
+    temp = getfilter
     result = []
     for doc in docs:
-            if getfilter in doc["filter"]:
+            if temp in doc["filter"]:
                     ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
                     result.append(ret)
     return jsonify(result)
