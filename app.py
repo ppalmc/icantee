@@ -97,7 +97,7 @@ def choosefilter():
 def highcal():
     client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
     db = client.student_scores
-    docs = db.menus.find( {"cal": { "$gt": "600" } })
+    docs = db.menus.find( {"cal": { "$gt": 600 } })
     r = []
     for doc in docs:
             ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
