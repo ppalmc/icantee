@@ -119,7 +119,7 @@ def lowcal():
 def midcal():
     client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
     db = client.student_scores
-    docs = db.menus.find({"$and"[{"cal": { "$gt": 300 } },{"cal": { "$lt": 600 } }]})
+    docs = db.menus.find({"$and":[{"cal": { "$gt": 300 } },{"cal": { "$lt": 600 } }]})
     r = []
     for doc in docs:
             ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
