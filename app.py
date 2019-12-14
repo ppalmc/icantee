@@ -46,8 +46,8 @@ def choosefilter():
     result = []
     for doc in docs:
             if "#carb" in doc["filter"]:
-            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
-            result.append(ret)
+                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
+                    result.append(ret)
     return jsonify(result)
 
 @app.route("/highcal")
