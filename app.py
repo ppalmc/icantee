@@ -45,7 +45,7 @@ def choosefilter():
     getfilter = request.args.get('filter')
     result = []
     for doc in docs:
-            if "#carb" in doc["filter"]:
+            if getfilter in doc["filter"]:
                     ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
                     result.append(ret)
     return jsonify(result)
