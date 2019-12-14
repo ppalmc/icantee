@@ -85,7 +85,7 @@ def showmenu():
     client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
     db = client.student_scores
     #getfilter = request.args.get('filter')
-    docs = db.menus.find()
+    docs = db.menus.find({})
     #r = dict()
     #r['data'] = []
     #for doc in docs:
