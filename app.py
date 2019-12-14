@@ -81,7 +81,7 @@ def showmenu():
     return jsonify(r)
 
 @app.route("/choosefilter")
-def showmenu():
+def choosefilter():
     client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
     db = client.student_scores
     docs = db.menus.find({})
