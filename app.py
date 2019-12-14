@@ -35,7 +35,7 @@ def insertmenu():
     list_of_menu = []
     for line in file:
             menu = line.split(',')
-            m = {'item':menu[0], 'store':int(menu[4]), 'cal':menu[2], 'filter':menu[1], 'price':menu[3]}
+            m = {'item':menu[0], 'store':int(menu[4]), 'cal':int(menu[2]), 'filter':menu[1], 'price':int(menu[3])}
             list_of_menu.append(m)
     db.menus.delete_many({})
     result = db.menus.insert_many(list_of_menu, ordered=False)
@@ -97,7 +97,7 @@ def choosefilter():
 def highcal():
     client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
     db = client.student_scores
-    docs = db.menus.find( {"cal": { $gt: 600 } })
+    docs = db.menus.find( {"cal": { "$gt": "600" } })
     r = []
     for doc in docs:
             ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
