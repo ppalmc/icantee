@@ -37,16 +37,14 @@ def showmenu():
             r['data'].append(ret)
     return jsonify(r)
 
-@app.route("/choosefilter")
-def choosefilter():
+@app.route("/choosefilterc")
+def choosefilterc():
     client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
     db = client.student_scores
     docs = db.menus.find({})
-    getfilter = request.args.get('filter')
-    temp = getfilter
     result = []
     for doc in docs:
-            if temp in doc["filter"]:
+            if "#carb" in doc["filter"]:
                     ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
                     result.append(ret)
     return jsonify(result)
