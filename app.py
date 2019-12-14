@@ -102,4 +102,15 @@ def highcal():
     for doc in docs:
             ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
             r.append(ret)
-    return jsonify(r)        
+    return jsonify(r)
+
+@app.route("/lowcal")
+def lowcal():
+    client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
+    db = client.student_scores
+    docs = db.menus.find( {"cal": { "$lt": 300 } })
+    r = []
+    for doc in docs:
+            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
+            r.append(ret)
+    return jsonify(r)
