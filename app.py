@@ -49,6 +49,42 @@ def choosefilterc():
                     result.append(ret)
     return jsonify(result)
 
+@app.route("/choosefilterv")
+def choosefilterv():
+    client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
+    db = client.student_scores
+    docs = db.menus.find({})
+    result = []
+    for doc in docs:
+            if "#vegetable" in doc["filter"]:
+                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
+                    result.append(ret)
+    return jsonify(result)
+
+@app.route("/choosefilterf")
+def choosefilterf():
+    client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
+    db = client.student_scores
+    docs = db.menus.find({})
+    result = []
+    for doc in docs:
+            if "#fried" in doc["filter"]:
+                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
+                    result.append(ret)
+    return jsonify(result)
+
+@app.route("/choosefilterh")
+def choosefilterh():
+    client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
+    db = client.student_scores
+    docs = db.menus.find({})
+    result = []
+    for doc in docs:
+            if "#healthy" in doc["filter"]:
+                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price']}
+                    result.append(ret)
+    return jsonify(result)
+
 @app.route("/highcal")
 def highcal():
     client = MongoClient("mongodb+srv://6131866021:1234@cluster0-3xijp.mongodb.net/test?retryWrites=true&w=majority")
