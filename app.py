@@ -18,7 +18,7 @@ def insertmenu():
     list_of_menu = []
     for line in file:
             menu = line.split(',')
-            m = {'item':menu[0], 'store':int(menu[4]), 'cal':int(menu[2]), 'filter':menu[1], 'price':int(menu[3]), 'pic':code(menu[5])}
+            m = {'item':menu[0], 'store':int(menu[4]), 'cal':int(menu[2]), 'filter':menu[1], 'price':int(menu[3]), 'pic':menu[5]}
             list_of_menu.append(m)
     db.menus.delete_many({})
     result = db.menus.insert_many(list_of_menu, ordered=False)
