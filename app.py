@@ -33,7 +33,7 @@ def showmenu():
     r = dict()
     r['data'] = []
     for doc in docs:
-            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['pic'], 'src':doc['src']}
+            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['href'], 'src':doc['src']}
             r['data'].append(ret)
     return jsonify(r)
 
@@ -45,7 +45,7 @@ def choosefilterc():
     result = []
     for doc in docs:
             if "#carb" in doc["filter"]:
-                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['pic'], 'src':doc['src']}
+                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['href'], 'src':doc['src']}
                     result.append(ret)
     return jsonify(result)
 
@@ -57,7 +57,7 @@ def choosefilterv():
     result = []
     for doc in docs:
             if "#vegetable" in doc["filter"]:
-                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['pic'], 'src':doc['src']}
+                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['href'], 'src':doc['src']}
                     result.append(ret)
     return jsonify(result)
 
@@ -69,7 +69,7 @@ def choosefilterf():
     result = []
     for doc in docs:
             if "#fried" in doc["filter"]:
-                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['pic'], 'src':doc['src']}
+                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['href'], 'src':doc['src']}
                     result.append(ret)
     return jsonify(result)
 
@@ -81,7 +81,7 @@ def choosefilterh():
     result = []
     for doc in docs:
             if "#healthy" in doc["filter"]:
-                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['pic'], 'src':doc['src']}
+                    ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['href'], 'src':doc['src']}
                     result.append(ret)
     return jsonify(result)
 
@@ -92,7 +92,7 @@ def highcal():
     docs = db.menus.find( {"cal": { "$gt": 600 } })
     r = []
     for doc in docs:
-            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['pic'], 'src':doc['src']}
+            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['href'], 'src':doc['src']}
             r.append(ret)
     return jsonify(r)
 
@@ -103,7 +103,7 @@ def lowcal():
     docs = db.menus.find( {"cal": { "$lt": 300 } })
     r = []
     for doc in docs:
-            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['pic'], 'src':doc['src']}
+            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['href'], 'src':doc['src']}
             r.append(ret)
     return jsonify(r)
 
@@ -114,7 +114,7 @@ def midcal():
     docs = db.menus.find({"$and":[{"cal": { "$gt": 300 } },{"cal": { "$lt": 600 } }]})
     r = []
     for doc in docs:
-            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['pic'], 'src':doc['src']}
+            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['href'], 'src':doc['src']}
             r.append(ret)
     return jsonify(r)
 
@@ -125,6 +125,6 @@ def allmenu():
     docs = db.menus.find({})
     r = []
     for doc in docs:
-            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['pic'], 'src':doc['src']}
+            ret = {'item':doc['item'], 'store':doc['store'], 'cal':doc['cal'], 'filter':doc['filter'], 'price':doc['price'], 'pic':doc['href'], 'src':doc['src']}
             r.append(ret)
     return jsonify(r)
